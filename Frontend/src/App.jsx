@@ -1,17 +1,17 @@
-import { useState, useRef } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import './App.css'
+import AboutTeam from './components/AboutTeam/AboutTeam'
+import ContactForm from './components/ContactForm'
+import Hero from './components/Hero'
+import Navbar from './components/NavBar'
+import ShowcasePage from './components/ShowcasePage';
+import VFilmsLanding from './components/VFilmsLanding';
+import CompanyWork from './components/CompanyWork';
+import AboutUs from './components/AboutUs';
 
-import "./App.css";
-import ContactForm from "./components/ContactForm";
-import Hero from "./components/hero";
-import Navbar from "./components/NavBar";
-import VFilmsLanding from "./components/VFilmsLanding";
-import ShowcasePage from "./components/ShowcasePage";
-import AboutTeam from "./components/AboutTeam/AboutTeam";
-import Aboutus from "./components/AboutUs";
-
-function AppContent() {
+function AppContent({ onVFilmsViewChange }) {
   const [activePolaroid, setActivePolaroid] = useState(null);
   const [hoveredPolaroid, setHoveredPolaroid] = useState(null);
   const [isHoverActivated, setIsHoverActivated] = useState(false); // To manage hover delay
@@ -19,6 +19,7 @@ function AppContent() {
 
   const handlePolaroidClick = (polaroidData) => {
     setActivePolaroid(polaroidData);
+    onVFilmsViewChange(true);
   };
 
   const handlePolaroidHover = (polaroidData) => {
@@ -31,6 +32,7 @@ function AppContent() {
     hoverTimeoutRef.current = setTimeout(() => {
       setHoveredPolaroid(polaroidData);
       setIsHoverActivated(true);
+      onVFilmsViewChange(true);
     }, 300); // 300ms delay on hover
   };
 
@@ -41,6 +43,7 @@ function AppContent() {
     }
     setIsHoverActivated(false);
     setHoveredPolaroid(null);
+    onVFilmsViewChange(false);
   };
 
   const handleBackToShowcase = () => {
@@ -51,6 +54,7 @@ function AppContent() {
     setActivePolaroid(null);
     setIsHoverActivated(false);
     setHoveredPolaroid(null);
+    onVFilmsViewChange(false);
   };
 
   // Determine which component to show
@@ -59,13 +63,6 @@ function AppContent() {
   return (
     <div
       className="min-h-screen w-full overflow-hidden relative"
-      style={{
-        backgroundColor: '#FFFFFF',
-        backgroundImage: `
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' fill='%23FDD0C1' opacity='1'/%3E%3C/svg%3E"),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='texture'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.25' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23texture)' opacity='0.5'/%3E%3C/svg%3E")
-        `
-      }}
     >
       {/* Showcase Page */}
       <motion.div
@@ -105,20 +102,44 @@ function AppContent() {
 }
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [isVFilmsView, setIsVFilmsView] = useState(false);
 
   return (
     <Router>
       <>
-        <Navbar />
-        <AppContent />
-        <Hero/>
-        <AboutTeam/>
+        <Navbar isVFilmsView={isVFilmsView} />
+        <div 
+          className="min-h-screen overflow-x-hidden" 
+          style={{
+            backgroundColor: '#FDDECF',
+            backgroundImage: `
+              url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' fill='%23FDD0C1' opacity='1'/%3E%3C/svg%3E"),
+              url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='texture'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.25' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23texture)' opacity='0.5'/%3E%3C/svg%3E")
+            `
+          }}
+        >
+          <div id="hero">
+            <Hero />
+          </div>
+          <div id="portfolio">
+            <AppContent onVFilmsViewChange={setIsVFilmsView} />
+          </div>
+          <div id="stories">
+            <AboutTeam />
+          </div>
+          <div id="services">
+            <CompanyWork/>
+          </div>
+          <div id="story">
+            <AboutUs/>
+          </div>
+          <div id="contact">
+            <ContactForm />
+          </div>
+        </div>
       </>
     </Router>
-    
   );
 }
 
-export default App;
-
+export default App

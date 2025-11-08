@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Topleft from '../assets/form/FooterVector.svg';
+import Bottomleft from '../assets/form/FooterVector2.svg';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -93,111 +95,43 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF4F0] relative overflow-hidden">
-      {/* Top Right Decorative Circle */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] pointer-events-none">
-        <svg viewBox="0 0 500 500" className="w-full h-full">
-          <g transform="translate(250, 0)">
-            {[0, 1, 2, 3, 4, 5].map((i) => (
-              <g key={i}>
-                <circle
-                  cx="0"
-                  cy="0"
-                  r={100 + i * 40}
-                  fill="none"
-                  stroke="#F15D2B"
-                  strokeWidth="1.5"
-                  opacity={0.4 - i * 0.05}
-                />
-                {[...Array(24)].map((_, j) => {
-                  const angle = (j * 15 * Math.PI) / 180;
-                  const r = 100 + i * 40;
-                  return (
-                    <circle
-                      key={j}
-                      cx={Math.cos(angle) * r}
-                      cy={Math.sin(angle) * r}
-                      r="3"
-                      fill="#F15D2B"
-                      opacity={0.3}
-                    />
-                  );
-                })}
-              </g>
-            ))}
-          </g>
-        </svg>
+    <div 
+      className="min-h-screen relative overflow-hidden"
+      style={{
+        backgroundColor: '#FDDECF',
+        backgroundImage: `
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' fill='%23FDD0C1' opacity='1'/%3E%3C/svg%3E"),
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='texture'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.25' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23texture)' opacity='0.5'/%3E%3C/svg%3E")
+        `
+      }}
+    >
+      {/* Decorative Circles */}
+      <div className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] lg:w-[350px] lg:h-[350px] z-10 pointer-events-none">
+        <img src={Topleft} alt="Top Right Decoration" className="w-full h-full" />
       </div>
 
-      {/* Bottom Left Decorative Circle */}
-      <div className="absolute bottom-0 left-0 w-[250px] h-[250px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] pointer-events-none">
-        <svg viewBox="0 0 400 400" className="w-full h-full">
-          <g transform="translate(0, 400)">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <g key={i}>
-                <circle
-                  cx="0"
-                  cy="0"
-                  r={80 + i * 35}
-                  fill="none"
-                  stroke="#F15D2B"
-                  strokeWidth="1.5"
-                  opacity={0.4 - i * 0.05}
-                />
-                {[...Array(20)].map((_, j) => {
-                  const angle = (j * 18 * Math.PI) / 180 - Math.PI / 2;
-                  const r = 80 + i * 35;
-                  return (
-                    <circle
-                      key={j}
-                      cx={Math.cos(angle) * r}
-                      cy={Math.sin(angle) * r}
-                      r="2.5"
-                      fill="#F15D2B"
-                      opacity={0.3}
-                    />
-                  );
-                })}
-              </g>
-            ))}
-          </g>
-        </svg>
-      </div>
-
-      {/* Logo */}
-      <div className="absolute top-6 left-6 md:top-8 md:left-8 lg:top-10 lg:left-12 z-10">
-        <div className="text-2xl md:text-3xl font-normal text-[#252729]">
-          <span className="text-[#F15D2B]">V</span> Films
-        </div>
-      </div>
-
-      {/* Menu Icon */}
-      <div className="absolute top-6 right-6 md:top-8 md:right-8 lg:top-10 lg:right-12 z-10">
-        <button className="flex flex-col gap-1.5">
-          <span className="w-8 h-0.5 bg-[#252729]"></span>
-          <span className="w-8 h-0.5 bg-[#252729]"></span>
-          <span className="w-8 h-0.5 bg-[#252729]"></span>
-        </button>
+      <div className="absolute bottom-0 left-0 w-[180px] h-[180px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] z-10 pointer-events-none">
+        <img src={Bottomleft} alt="Bottom Left Decoration" className="w-full h-full" />
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-6 md:px-8 lg:px-12 py-20 md:py-24 lg:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-7xl mx-auto">
-          
+      <div className="container mx-auto px-6 md:px-8 lg:px-12 py-6 md:py-10 lg:py-6 relative z-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+
           {/* Left Section */}
-          <div className="space-y-6 pt-8">
-            <div className="space-y-2">
+          <div className="space-y-6 pt-8 relative top-20">
+            <div className="mb-1 space-y-1 font-instrument">
               <p className="text-lg text-[#252729]">
                 Whether you have an idea, a question, or simply want
               </p>
               <p className="text-lg text-[#252729]">
                 to explore how V can work together, V're just a
               </p>
-              <p className="text-lg text-[#252729] border-b-2 border-[#F15D2B] inline-block">
+              <p className="text-lg text-[#252729] inline-block">
                 message away.
               </p>
             </div>
-            <div className="space-y-1 pt-4">
+            <div className="space-y-1 pt-0">
               <p className="text-lg text-[#252729]">
                 Let's catch up over coffee.
               </p>
@@ -208,17 +142,17 @@ const ContactForm = () => {
           </div>
 
           {/* Right Section - Form */}
-          <div className="space-y-8">
-            <div className="text-right">
-              <h1 className="text-4xl md:text-5xl font-normal text-[#252729] mb-2">
+          <div className="space-y-4 relative top-30">
+            <div className="text-center">
+              <h1 className="text-xl md:text-3xl font-normal font-halant text-[#252729] mb-1">
                 Join the Story
               </h1>
-              <p className="text-lg text-[#252729]">
+              <p className="text-sm md:text-base font-instrument text-[#252729]">
                 Ready to bring your vision to life? Let's talk.
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-3">
               <div>
                 <input
                   type="text"
@@ -226,12 +160,12 @@ const ContactForm = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name*"
-                  className={`w-full px-4 py-3 bg-white border ${
+                  className={`w-full px-3 py-2 text-sm bg-white border ${
                     errors.name ? 'border-red-500' : 'border-gray-200'
-                  } rounded-lg focus:outline-none focus:border-[#F15D2B] transition-colors text-[#252729]`}
+                  } rounded-lg focus:outline-none focus:border-primary transition-colors text-[#252729] font-instrument`}
                 />
                 {errors.name && (
-                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                  <p className="text-red-500 text-xs mt-1">{errors.name}</p>
                 )}
               </div>
 
@@ -242,12 +176,12 @@ const ContactForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Your email*"
-                  className={`w-full px-4 py-3 bg-white border ${
+                  className={`w-full px-3 py-2 text-sm bg-white border ${
                     errors.email ? 'border-red-500' : 'border-gray-200'
-                  } rounded-lg focus:outline-none focus:border-[#F15D2B] transition-colors text-[#252729]`}
+                  } rounded-lg focus:outline-none focus:border-primary transition-colors text-[#252729] font-instrument`}
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
                 )}
               </div>
 
@@ -258,12 +192,12 @@ const ContactForm = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Phone"
-                  className={`w-full px-4 py-3 bg-white border ${
+                  className={`w-full px-3 py-2 text-sm bg-white border ${
                     errors.phone ? 'border-red-500' : 'border-gray-200'
-                  } rounded-lg focus:outline-none focus:border-[#F15D2B] transition-colors text-[#252729]`}
+                  } rounded-lg focus:outline-none focus:border-primary transition-colors text-[#252729] font-instrument`}
                 />
                 {errors.phone && (
-                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                  <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
                 )}
               </div>
 
@@ -273,63 +207,59 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Your message*"
-                  rows="5"
-                  className={`w-full px-4 py-3 bg-white border ${
+                  rows="4"
+                  className={`w-full px-3 py-2 text-sm bg-white border ${
                     errors.message ? 'border-red-500' : 'border-gray-200'
-                  } rounded-lg focus:outline-none focus:border-[#F15D2B] transition-colors resize-none text-[#252729]`}
+                  } rounded-lg focus:outline-none focus:border-primary transition-colors resize-none text-[#252729] font-instrument`}
                 ></textarea>
                 {errors.message && (
-                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                  <p className="text-red-500 text-xs mt-1">{errors.message}</p>
                 )}
               </div>
 
               {submitSuccess && (
-                <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-center">
-                  Form Submitted
+                <div className="bg-green-50 border border-green-200 text-green-700 px-3 py-2 rounded-lg text-center text-sm">
+                  Form Submitted Successfully!
                 </div>
               )}
 
               {errors.submit && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-center">
+                <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-lg text-center text-sm">
                   {errors.submit}
                 </div>
               )}
 
-              <button
-                onClick={handleSubmit}
-                disabled={isSubmitting}
-                className="w-full bg-[#F15D2B] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#d94e1f] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? 'Submitting...' : 'Submit'}
-              </button>
+              <div className="w-full flex justify-center items-center pt-2">
+                <button
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className="w-auto bg-primary cursor-pointer font-instrument shadow-[0_4px_12px_0_rgba(0,0,0,0.2)] text-white py-2.5 px-8 rounded-full text-sm font-medium hover:bg-[#d94e1f] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                </button>
+              </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-base text-[#252729] pt-4">
-              <a href="mailto:vernan@vernanfilms.co.in" className="hover:text-[#F15D2B] transition-colors">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-[#252729] pt-2">
+              <a href="mailto:vernan@vernanfilms.co.in" className="text-primary transition-colors">
                 vernan@vernanfilms.co.in
               </a>
-              <a href="tel:+919876164657" className="hover:text-[#F15D2B] transition-colors">
+              <a href="tel:+919876164657" className="text-primary transition-colors">
                 +91 98761 64657
               </a>
             </div>
           </div>
+
         </div>
       </div>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
-        
-        * {
-          font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-        
         input::placeholder,
         textarea::placeholder {
           color: #999;
           font-weight: 400;
         }
 
-        /* Responsive breakpoints */
         @media (max-width: 480px) {
           .container {
             padding-left: 1rem;
@@ -355,7 +285,6 @@ const ContactForm = () => {
           }
         }
 
-        /* iPad specific */
         @media (width: 2048px) and (height: 2732px) {
           .container {
             max-width: 1800px;
@@ -366,4 +295,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ContactForm;
