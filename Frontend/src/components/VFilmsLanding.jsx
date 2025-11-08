@@ -141,7 +141,7 @@ const VFilmsLanding = ({ onBackClick, polaroidData: propPolaroidData }) => {
         </button>
 
         {/* Main Content */}
-        <div className="flex flex-wrap justify-center items-start px-10 py-16 gap-10 lg:gap-20">
+        <div className="flex flex-wrap justify-center items-start px-10 py-10 gap-10 lg:gap-20">
           {/* Polaroid Card */}
           <div
             className={`relative bg-white overflow-hidden mx-auto transition-all duration-500 ${isCardHovered ? "-translate-y-4 rotate-1" : "rotate-0"}`}
@@ -171,7 +171,7 @@ const VFilmsLanding = ({ onBackClick, polaroidData: propPolaroidData }) => {
 
           {/* Info Section */}
           <div className="max-w-lg relative">
-            <h2 className="text-xl md:text-2xl mb-10 text-gray-800 relative right-40 font-instrument whitespace-pre-line ">
+            <h2 className="text-lg md:text-2xl mb-10 text-gray-800 relative  right-40 font-instrument whitespace-pre-line ">
               {polaroidData.description}
             </h2>
             <div
