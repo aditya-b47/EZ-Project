@@ -112,8 +112,10 @@ function App() {
       <>
         <Navbar />
         <AppContent />
+        <Hero/>
       </>
     </Router>
+    
   );
 }
 
