@@ -10,23 +10,23 @@ const AboutTeam = () => {
     { number: "10+", label: "Experts Team" },
   ];
   return (
-    <section className="min-h-screen  px-6 md:px-12 lg:px-24 py-10">
-      <div className="w-full ">
+    <section className="min-h-screen px-4 sm:px-6 md:px-12 lg:px-24 py-8 sm:py-10">
+      <div className="w-full">
         {/* Header Text */}
-        <div className="grid lg:grid-cols-2  gap-0 mb-0">
-          <motion.div className=" flex items-center flex-col  pt-20">
-            <h3 className="font-halant text-brand-blue  text-3xl mb-3">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-0 mb-8 sm:mb-10 lg:mb-0">
+          <motion.div className="flex items-center flex-col pt-10 sm:pt-16 lg:pt-20">
+            <h3 className="font-halant text-brand-blue text-xl sm:text-2xl lg:text-3xl mb-3 text-center sm:text-left">
               A montage of familiar faces and names.
             </h3>
-            <p className="text-gray-600 text-lg font-instrument text-center leading-relaxed max-w-md">
+            <p className="text-gray-600 text-base sm:text-lg font-instrument text-center leading-relaxed max-w-md">
               Some stories come from the biggest names. Others begin with bold,
               rising voices. We've been fortunate to walk alongside both -
               listening, creating, and building stories that matter.
             </p>
           </motion.div>
 
-          <motion.div>
-            <p className="font-island  text-brand-blue  text-center justify-center text-3xl md:text-5xl italic leading-relaxed">
+          <motion.div className="flex items-center justify-center">
+            <p className="font-island text-brand-blue text-center justify-center text-xl sm:text-2xl md:text-3xl lg:text-5xl italic leading-relaxed">
               Every project is more than just a brief - it's a new chapter
               waiting to be written. Together, we've crafted tales that inspire,
               connect, and endure.
@@ -61,13 +61,12 @@ const AboutTeam = () => {
                     mixBlendMode: "multiply",
                   }}
                 />
-
                 {/* Content */}
                 <div className="relative z-10">
-                  <p className="text-brand-blue font-instrument text-6xl ">
+                  <p className="text-brand-blue font-instrument text-4xl sm:text-5xl lg:text-6xl">
                     {stat.number}
                   </p>
-                  <p className="text-primary font-instrument text-xl mt-2">
+                  <p className="text-primary font-instrument text-lg sm:text-xl lg:text-xl mt-2">
                     {stat.label}
                   </p>
                 </div>
@@ -76,9 +75,9 @@ const AboutTeam = () => {
           </div>
 
           {/* Right Side - Mountain with Full Circle Ring */}
-          <div className="relative w-full h-[600px] flex items-center justify-center">
+          <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center order-1 lg:order-2">
             {/* Wrapper Container - Centered */}
-            <div className="absolute w-[450px] h-[450px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute w-[300px] sm:w-[350px] lg:w-[450px] h-[300px] sm:h-[350px] lg:h-[450px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               {/* Top Semicircle - Scale once, then rotate slowly */}
               <motion.div
                 className="absolute w-full h-1/2 top-0 left-0 overflow-hidden origin-bottom"
@@ -158,7 +157,7 @@ const AboutTeam = () => {
               <img
                 src={mountain_image}
                 alt="Mountain"
-                className="h-80 object-contain"
+                className="h-48 sm:h-64 lg:h-80 object-contain"
               />
             </motion.div>
           </div>
