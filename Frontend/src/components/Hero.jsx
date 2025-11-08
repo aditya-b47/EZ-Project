@@ -52,11 +52,11 @@ const Hero = () => {
 
                 {/* Right side - Content */}
                 <div className="space-y-8">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-foreground leading-tight">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-island italic text-centre leading-tight">
                         Varnan is where stories find their voice and form
                     </h2>
 
-                    <div className="flex gap-4 text-primary text-lg font-medium">
+                    <div className="flex gap-4 text-primary font-bold font-halant text-2xl ">
                         <span>Films</span>
                         <span>.</span>
                         <span>Brands</span>
