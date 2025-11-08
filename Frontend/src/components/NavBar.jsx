@@ -82,18 +82,18 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full h-[70px] bg-white/25 z-50">
       {/* Logo - Left side - only show when on hero section */}
       {!showLogo && (
-        <div className="absolute left-6 top-1/2 -translate-y-1/2 z-50">
+        <div className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-50">
           <img 
             src={Logo} 
             alt="V Films Logo" 
-            className="h-10 w-auto object-contain"
+            className="h-8 sm:h-10 w-auto object-contain"
           />
         </div>
       )}
 
       {/* Menu Toggle Button with SVG Images */}
       <motion.button
-        className="absolute right-6 top-1/2 -translate-y-1/2 cursor-pointer z-60 p-2 w-10 h-10 flex items-center justify-center"
+        className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 cursor-pointer z-60 p-2 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center"
         onClick={toggleMenu}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -110,7 +110,7 @@ const Navbar = () => {
             scale: isOpen ? 0.8 : 1
           }}
           transition={{ duration: 0.3 }}
-          className="absolute w-10 h-10"
+          className="absolute w-8 h-8 sm:w-10 sm:h-10"
         />
         
         {/* Close Icon (X) */}
@@ -124,26 +124,99 @@ const Navbar = () => {
             scale: isOpen ? 1 : 0.8
           }}
           transition={{ duration: 0.3 }}
-          className="absolute w-10 h-10"
+          className="absolute w-8 h-8 sm:w-10 sm:h-10"
         />
       </motion.button>
 
-      {/* Sliding Glass Menu - Desktop & Mobile */}
+      {/* Mobile Menu - Only for small screens */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Background */}
+            {/* Background Overlay - Only for mobile */}
             <motion.div
-              className="absolute top-0 right-0 w-full h-full"
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={toggleMenu}
+            />
+
+            {/* Mobile Menu Content */}
+            <motion.div
+              className="fixed top-0 right-0 w-4/5 max-w-sm h-full bg-white/95 backdrop-blur-md shadow-2xl z-50 p-6 md:hidden"
+              variants={menuVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+            >
+              {/* Close Button for Mobile */}
+              <div className="flex justify-end mb-8">
+                <button
+                  onClick={toggleMenu}
+                  className="p-2"
+                  aria-label="Close menu"
+                >
+                  <img
+                    src={CloseIconSVG}
+                    alt="Close"
+                    className="w-6 h-6"
+                  />
+                </button>
+              </div>
+
+              {/* Mobile Menu Links */}
+              <div className="flex flex-col items-center space-y-6 mt-10">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-gray-800 text-lg font-medium px-6 py-3 rounded-full hover:bg-orange-50 hover:text-orange-500 transition-all w-full text-center"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsOpen(false);
+                      const sectionId = link.href.substring(1);
+                      scrollToSection(sectionId);
+                    }}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+
+                <a
+                  href="#contact"
+                  className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-4 rounded-full text-lg font-medium flex items-center justify-center gap-3 shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-all w-full mt-4"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    scrollToSection('contact');
+                  }}
+                >
+                  Let's Talk
+                  <Mail size={18} />
+                </a>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Desktop & Tablet Menu - Original code for md screens and above */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Background - Hidden on mobile, visible on md and above */}
+            <motion.div
+              className="absolute top-0 right-0 w-full h-full hidden md:block"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             />
 
-            {/* Content */}
+            {/* Content - Original styling for md and above */}
             <motion.div
-              className="absolute top-0 right-0 w-full h-full flex items-center justify-end pr-20 gap-8"
+              className="absolute top-0 right-0 w-full h-full hidden md:flex items-center justify-end pr-20 gap-8"
               variants={menuVariants}
               initial="closed"
               animate="open"
@@ -157,7 +230,7 @@ const Navbar = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     setIsOpen(false);
-                    const sectionId = link.href.substring(1); // Remove the '#' from the href
+                    const sectionId = link.href.substring(1);
                     scrollToSection(sectionId);
                   }}
                 >
