@@ -34,10 +34,10 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const heroSection = document.getElementById('hero');
+      const hero = document.getElementById('hero');
       
-      if (heroSection) {
-        const heroRect = heroSection.getBoundingClientRect();
+      if (hero) {
+        const heroRect = hero.getBoundingClientRect();
         // Show logo when hero section is in view (top of page)
         setShowLogo(heroRect.bottom > 50); // Show logo if hero section is still visible
       }
@@ -75,7 +75,7 @@ const Navbar = () => {
     { name: 'Services', href: '#portfolio' },
     { name: 'Our Story', href: '#story' },
     { name: 'Their Stories', href: '#stories' },
-    {name: 'Vernan', href: '#portfolio'}
+    {name: 'Varnan', href: '#portfolio'}
   ];
 
   return (
