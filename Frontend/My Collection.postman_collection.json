@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "e4f8879d-be69-4a5c-8dc6-5367c8633e91",
+		"name": "My Collection",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49912656",
+		"_collection_link": "https://aditya-b47-9162090.postman.co/workspace/Aditya-yadav's-Workspace~7e08ee51-5b88-4370-8108-4775321a89ff/collection/49912656-e4f8879d-be69-4a5c-8dc6-5367c8633e91?action=share&source=collection_link&creator=49912656"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Test user\",\r\n  \"email\": \"testuser@gmail.com\",\r\n  \"phone\": \"908765498\",\r\n  \"message\": \"This is a message\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://vernanbackend.ezlab.in/api/contact-us/",
+					"protocol": "https",
+					"host": [
+						"vernanbackend",
+						"ezlab",
+						"in"
+					],
+					"path": [
+						"api",
+						"contact-us",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
